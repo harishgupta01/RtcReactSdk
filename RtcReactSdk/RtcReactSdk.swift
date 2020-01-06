@@ -24,7 +24,7 @@ public class RtcReactSdk: NSObject {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.onSessionStatus(notification:)), name: Notification.Name("onSessionStatus"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onSessionStatus(notification:)), name: Notification.Name("onSessionError"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onSessionError(notification:)), name: Notification.Name("onSessionError"), object: nil)
         
          NotificationCenter.default.addObserver(self, selector: #selector(self.onNotification(notification:)), name: Notification.Name("onNotification"), object: nil)
     }
@@ -80,6 +80,11 @@ public class RtcReactSdk: NSObject {
               RtcReactBridge.sharedInstance.callMethod("unmute",args)
     }
     
+    public func merge(callId callid:Any) {
+           let args = [callid]
+           RtcReactBridge.sharedInstance.callMethod("merge",args)
+    }
+    
     
     @objc func onConnectionStateChange(notification:Notification){
           print(notification.userInfo ?? "")
@@ -106,7 +111,7 @@ public class RtcReactSdk: NSObject {
         
         if let dict = notification.userInfo as NSDictionary? {
             if let state = dict["status"] as? String, let traceId = dict["traceId"] as? String{
-                rtcDelegate?.onSessionStatus(status: state,id: traceId)
+                rtcDelegate?.onRtcSessionStatus(status: state,id: traceId)
             }
         }
     }
@@ -120,12 +125,12 @@ public class RtcReactSdk: NSObject {
         }
     }
     
-    @objc func onRtcSessionError(notification:Notification){
+    @objc func onSessionError(notification:Notification){
           print(notification.userInfo ?? "")
         
         if let dict = notification.userInfo as NSDictionary? {
           if let errorInfoDict = dict["error"] as? [AnyHashable : Any], let traceId = dict["traceId"] as? String{
-            rtcDelegate?.onSessionError(error:errorInfoDict ,id:traceId)
+            rtcDelegate?.onRtcSessionError(error:errorInfoDict ,id:traceId)
           }
           
           
@@ -136,7 +141,7 @@ public class RtcReactSdk: NSObject {
 public protocol RtcReactSdkDelegate {
     func onRtcConnectionStateChange(state connectionState:String)
     func onRtcConnectionError(error errorInfo:[AnyHashable : Any])
-    func onSessionStatus(status sessionStatus:String,id callId:String)
-    func onSessionError(error errorInfo:[AnyHashable : Any],id callId:String)
+    func onRtcSessionStatus(status sessionStatus:String,id callId:String)
+    func onRtcSessionError(error errorInfo:[AnyHashable : Any],id callId:String)
     func onNotification(notification notfyData: [AnyHashable : Any])
 }
