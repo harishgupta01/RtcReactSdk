@@ -25,17 +25,31 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'harishgupta01' => 'harish.28gupta@gmail.com' }
-  # s.source           = { :git => 'https://github.com/harishgupta01/RtcReactSdk.git' }
-  s.source           = { :http => 'file:' + __dir__ + '/RtcReactSdk.zip' }
+  s.source           = { :git => 'https://github.com/harishgupta01/RtcReactSdk.git' }
+  #s.source           = { :http => 'file:' + __dir__ + '/RtcReactSdk.zip' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  s.source_files = 'RtcReactSdk/RtcReactSdk/*'
   s.ios.deployment_target = '8.0'
-
-  s.source_files = 'RtcReactSdk/**/*'
+  s.exclude_files = "RtcReactSdk/RtcReactSdk/*.plist"
+  s.vendored_frameworks = 'RtcReactSdk/Dependencies/CoreModules.framework' ,'RtcReactSdk/Dependencies/cxxreact.framework' ,'RtcReactSdk/Dependencies/DoubleConversion.framework' ,  'RtcReactSdk/Dependencies/FBReactNativeSpec.framework', 'RtcReactSdk/Dependencies/folly.framework' ,  'RtcReactSdk/Dependencies/glog.framework' ,  'RtcReactSdk/Dependencies/jsi.framework', 'RtcReactSdk/Dependencies/jsinspector.framework' ,  'RtcReactSdk/Dependencies/jsireact.framework',  'RtcReactSdk/Dependencies/RCTActionSheet.framework', 'RtcReactSdk/Dependencies/RCTAnimation.framework' ,  'RtcReactSdk/Dependencies/RCTBlob.framework',  'RtcReactSdk/Dependencies/RCTImage.framework', 'RtcReactSdk/Dependencies/RCTLinking.framework' ,  'RtcReactSdk/Dependencies/RCTNetwork.framework' ,  'RtcReactSdk/Dependencies/RCTSettings.framework',  'RtcReactSdk/Dependencies/RCTText.framework',  'RtcReactSdk/Dependencies/RCTTypeSafety.framework',  'RtcReactSdk/Dependencies/RCTVibration.framework',  'RtcReactSdk/Dependencies/react_native_netinfo.framework',  'RtcReactSdk/Dependencies/react_native_webrtc.framework',  'RtcReactSdk/Dependencies/React.framework' ,'RtcReactSdk/Dependencies/ReactCommon.framework','RtcReactSdk/Dependencies/ReactNativeIncallManager.framework','RtcReactSdk/Dependencies/RNCAsyncStorage.framework','RtcReactSdk/Dependencies/RNDeviceInfo.framework','RtcReactSdk/Dependencies/WebRTC.framework','RtcReactSdk/Dependencies/yoga.framework'
+	
+  
    s.resource_bundles = {
      'RtcReactSdk' => ['RtcReactSdk/main.jsbundle']
    }
 
+  other_frameworks =  ['CoreModules', 'cxxreact', 'DoubleConversion', 'FBReactNativeSpec', 'folly', 'glog', 'jsi', 'jsinspector', 'jsireact','RCTActionSheet', 'RCTAnimation', 'RCTBlob', 'RCTImage','RCTLinking','RCTSettings','RCTText','RCTTypeSafety','RCTVibration','react_native_netinfo','react_native_webrtc','React','ReactCommon','ReactNativeIncallManager','RNCAsyncStorage','RNDeviceInfo','WebRTC','yoga']
+  
+    other_ldflags = '$(inherited) -framework ' + other_frameworks.join(' -framework ') + 
+      ' -lz -lstdc++'
+
+    s.xcconfig     = {
+
+      'OTHER_LDFLAGS[arch=arm64]'  => other_ldflags,
+      'OTHER_LDFLAGS[arch=armv7]'  => other_ldflags,
+      'OTHER_LDFLAGS[arch=armv7s]' => other_ldflags
+    }
+	
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
@@ -45,7 +59,7 @@ TODO: Add long description of the pod here.
   #lib.header_mappings_dir = 'IrisRtcSdk/webrtc/header'
   #lib.source_files = 'IrisRtcSdk/webrtc/header/WebRTC/*', 'IrisRtcSdk/loggerSdk/header/*'
   #lib.preserve_paths = 'webrtc/libs/libwebrtc.a'
-  lib.vendored_libraries = 'Dependencies/cxxreact.framework' ,  'Dependencies/FBReactNativeSpec.framework', 'Dependencies/folly.framework' ,  'Dependencies/glog.framework' ,  'Dependencies/jsi.framework', 'Dependencies/jsinspector.framework' ,  'Dependencies/jsireact.framework',  'Dependencies/RCTActionSheet.framework', 'Dependencies/RCTAnimation.framework' ,  'Dependencies/RCTBlob.framework',  'Dependencies/RCTImage.framework', 'Dependencies/RCTLinking.framework' ,  'Dependencies/RCTNetwork.framework' ,  'Dependencies/RCTSettings.framework',  'Dependencies/RCTText.framework',  'Dependencies/RCTTypeSafety.framework',  'Dependencies/RCTVibration.framework',  'Dependencies/react_native_netinfo.framework',  'Dependencies/react_native_webrtc.framework',  'Dependencies/React.framework' ,'Dependencies/ReactCommon.framework' ,'Dependencies/ReactNativeIncallManager.framework','Dependencies/RNCAsyncStorage.framework','Dependencies/RNDeviceInfo.framework','Dependencies/yoga.framework'
+  lib.vendored_frameworks = 'RtcReactSdk/Dependencies/cxxreact.framework' ,  'RtcReactSdk/Dependencies/FBReactNativeSpec.framework', 'RtcReactSdk/Dependencies/folly.framework' ,  'RtcReactSdk/Dependencies/glog.framework' ,  'RtcReactSdk/Dependencies/jsi.framework', 'RtcReactSdk/Dependencies/jsinspector.framework' ,  'RtcReactSdk/Dependencies/jsireact.framework',  'RtcReactSdk/Dependencies/RCTActionSheet.framework', 'RtcReactSdk/Dependencies/RCTAnimation.framework' ,  'RtcReactSdk/Dependencies/RCTBlob.framework',  'RtcReactSdk/Dependencies/RCTImage.framework', 'RtcReactSdk/Dependencies/RCTLinking.framework' ,  'RtcReactSdk/Dependencies/RCTNetwork.framework' ,  'RtcReactSdk/Dependencies/RCTSettings.framework',  'RtcReactSdk/Dependencies/RCTText.framework',  'RtcReactSdk/Dependencies/RCTTypeSafety.framework',  'RtcReactSdk/Dependencies/RCTVibration.framework',  'RtcReactSdk/Dependencies/react_native_netinfo.framework',  'RtcReactSdk/Dependencies/react_native_webrtc.framework',  'RtcReactSdk/Dependencies/React.framework' ,'RtcReactSdk/Dependencies/ReactCommon.framework' ,'RtcReactSdk/Dependencies/ReactNativeIncallManager.framework','RtcReactSdk/Dependencies/RNCAsyncStorage.framework','RtcReactSdk/Dependencies/RNDeviceInfo.framework','RtcReactSdk/Dependencies/yoga.framework'
   
   lib.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => "$(PLATFORM_DIR)/Developer/Library/Frameworks", 'OTHER_LDFLAGS' => "-ObjC",'ENABLE_BITCODE' => "NO"}
   end

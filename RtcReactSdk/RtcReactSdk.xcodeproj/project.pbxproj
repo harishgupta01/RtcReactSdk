@@ -3,20 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2B67033623C3CF93005626A7 /* RtcReactSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B67032C23C3CF93005626A7 /* RtcReactSdk.framework */; };
 		2B67033B23C3CF93005626A7 /* RtcReactSdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67033A23C3CF93005626A7 /* RtcReactSdkTests.m */; };
 		2B67033D23C3CF93005626A7 /* RtcReactSdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B67032F23C3CF93005626A7 /* RtcReactSdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2B67034C23C3CFB8005626A7 /* RtcNativeBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034623C3CFB8005626A7 /* RtcNativeBridge.swift */; };
-		2B67034D23C3CFB8005626A7 /* RtcReactBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034723C3CFB8005626A7 /* RtcReactBridge.swift */; };
-		2B67034E23C3CFB8005626A7 /* RtcReactSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034823C3CFB8005626A7 /* RtcReactSdk.swift */; };
+		2B67034C23C3CFB8005626A7 /* RtcNativeBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034623C3CFB8005626A7 /* RtcNativeBridge.swift */; platformFilter = ios; };
+		2B67034D23C3CFB8005626A7 /* RtcReactBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034723C3CFB8005626A7 /* RtcReactBridge.swift */; platformFilter = ios; };
+		2B67034E23C3CFB8005626A7 /* RtcReactSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034823C3CFB8005626A7 /* RtcReactSdk.swift */; platformFilter = ios; };
 		2B67034F23C3CFB8005626A7 /* RtcNativeModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B67034923C3CFB8005626A7 /* RtcNativeModule.h */; };
-		2B67035023C3CFB8005626A7 /* RtcNativeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034A23C3CFB8005626A7 /* RtcNativeModule.m */; };
+		2B67035023C3CFB8005626A7 /* RtcNativeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67034A23C3CFB8005626A7 /* RtcNativeModule.m */; platformFilter = ios; };
 		2B67035123C3CFB8005626A7 /* RtcReactSdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B67034B23C3CFB8005626A7 /* RtcReactSdk.h */; };
-		2B67035323C3CFE8005626A7 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B67035223C3CFE8005626A7 /* main.jsbundle */; };
+		2B67035323C3CFE8005626A7 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B67035223C3CFE8005626A7 /* main.jsbundle */; platformFilter = ios; };
 		2B67036E23C3D085005626A7 /* RCTTypeSafety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B67035523C3D084005626A7 /* RCTTypeSafety.framework */; };
 		2B67036F23C3D085005626A7 /* RCTTypeSafety.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B67035523C3D084005626A7 /* RCTTypeSafety.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B67037023C3D085005626A7 /* jsinspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B67035623C3D084005626A7 /* jsinspector.framework */; };
@@ -452,6 +452,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -513,6 +514,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -537,11 +539,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = LPP27B939A;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dependencies",
@@ -566,11 +571,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = LPP27B939A;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dependencies",
